@@ -21,8 +21,24 @@ npm start
 
 homepage will in http://localhost:8080/
 
-![alt text](https://github.com/satsuya0114/webpack5-babel7-react-starter/blob/main/readme.png)
+![alt text](https://github.com/satsuya0114/datePicker/blob/main/readme.png)
 
 dev mode can see BundleAnalyzerPlugin
 
+![alt text](https://github.com/satsuya0114/datePicker/blob/main/BundleAnalyzerPlugin.png)
 
+#### calendar demo
+
+will in http://localhost:8080/calendardemo
+
+![alt text](https://github.com/satsuya0114/datePicker/blob/main/calendarDemo.png)
+
+---
+
+```
+# production mode to build ad dist folder
+npm run build
+
+# run production in local express server
+npm run rundist
+```
