@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { Outer } from './styledComponent';
+import { Outer, Wrapper } from './styledComponent';
 import Select from './atoms/Select';
 import YearMonth from './atoms/YearMonth';
+import Date from './atoms/Date';
 import { getYearRange } from '../commonFunction';
 
 const Calendar = () => {
   const [showMY, setShowMY] = useState('');
+  const [viewDate, setViewDate] = useState(null);
+  const [yearRange, setYearRange] = useState([]);
   const [selectDate, setSelectDate] = useState(null);
   const [selectMode, setSelectMode] = useState('date');
 
@@ -14,19 +17,20 @@ const Calendar = () => {
     console.log(moment().format('YYYY/MM/DD HH:mm'));
     setShowMY(moment().format('MMM YYYY'));
     setSelectDate(moment());
+    setViewDate(moment());
+    setYearRange(getYearRange(parseInt(moment().format('YYYY'), 10)));
   }, []);
 
   useEffect(() => {
-    if (selectDate !== null) {
+    if (viewDate !== null) {
       switch (selectMode) {
         case 'date':
-          setShowMY(moment(selectDate).format('MMM YYYY'));
+          setShowMY(moment(viewDate).format('MMM YYYY'));
           break;
         case 'month':
-          setShowMY(moment(selectDate).format('YYYY'));
+          setShowMY(moment(viewDate).format('YYYY'));
           break;
         case 'year': {
-          const yearRange = getYearRange(parseInt(moment(selectDate).format('YYYY'), 10));
           setShowMY(`${yearRange[0]}-${yearRange[9]}`);
           break;
         }
@@ -34,6 +38,12 @@ const Calendar = () => {
       }
     }
   }, [selectMode]);
+
+  useEffect(() => {
+    if (viewDate) {
+      setYearRange(getYearRange(parseInt(moment(viewDate).format('YYYY'), 10)));
+    }
+  }, [viewDate]);
 
   const clickPrevNext = (value) => {
     if (value === 1) {
@@ -59,15 +69,28 @@ const Calendar = () => {
     });
   };
 
+  const clickDate = (date) => {
+    console.log(moment(date).format('YYYY/MM/DD'));
+  };
+
   return (
-    <Outer>
-      <Select clickPrevNext={clickPrevNext} changeMode={changeMode} showMY={showMY} />
-      {
-        selectMode === 'date'
-          ? <div>date</div>
-          : <YearMonth selectDate={selectDate} mode={selectMode} />
-      }
-    </Outer>
+    <Wrapper>
+      <Outer>
+        <Select clickPrevNext={clickPrevNext} changeMode={changeMode} showMY={showMY} />
+        {
+          selectMode === 'date'
+            ? <Date viewDate={viewDate} selectDate={selectDate} clickDate={clickDate} />
+            : (
+              <YearMonth
+                selectDate={selectDate}
+                mode={selectMode}
+                yearRange={yearRange}
+                viewDate={viewDate}
+              />
+            )
+        }
+      </Outer>
+    </Wrapper>
   );
 };
 
