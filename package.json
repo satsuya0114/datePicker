@@ -1,8 +1,8 @@
 {
-  "name": "webpack5-babel7-react-starter",
+  "name": "datepicker-react",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "",
+  "repository": "git@github.com:satsuya0114/datePicker.git",
   "author": "Nei Nei <satsuya0114@gmail.com>",
   "license": "MIT",
   "scripts": {
