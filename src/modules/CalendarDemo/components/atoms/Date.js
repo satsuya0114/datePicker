@@ -41,10 +41,11 @@ const Date = (props) => {
   return (
     <DateGrid>
       {moment.weekdaysMin().map((week) => (
-        <WeekName>{week}</WeekName>
+        <WeekName key={week}>{week}</WeekName>
       ))}
       {days42.map((dayObj) => (
         <DateItem
+          key={moment(dayObj.date).format('x')}
           gray={dayObj.gray}
           today={moment(dayObj.date).isSame(moment(), 'day') && !moment(selectDate).isSame(dayObj.date, 'day')}
           selected={moment(selectDate).isSame(dayObj.date, 'day')}

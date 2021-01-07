@@ -18,7 +18,7 @@ const Calendar = (props) => {
     console.log(moment().format('YYYY/MM/DD HH:mm'));
     setShowMY(moment().format('MMM YYYY'));
     setViewDate(moment());
-    setYearRange(getYearRange(parseInt(moment().format('YYYY'), 10)));
+    setYearRange(getYearRange(moment().year()));
   }, []);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Calendar = (props) => {
 
   useEffect(() => {
     if (viewDate) {
-      setYearRange(getYearRange(parseInt(moment(viewDate).format('YYYY'), 10)));
+      setYearRange(getYearRange(moment(viewDate).year()));
     }
   }, [viewDate]);
 
@@ -99,6 +99,13 @@ const Calendar = (props) => {
     });
   };
 
+  const onClickMonth = (month) => {
+    const viewYear = moment(viewDate).year();
+    setViewDate(moment());
+  };
+
+  const onClickYear = (year) => {};
+
   return (
     <Wrapper>
       <Outer>
@@ -112,6 +119,8 @@ const Calendar = (props) => {
                 mode={selectMode}
                 yearRange={yearRange}
                 viewDate={viewDate}
+                onClickMonth={onClickMonth}
+                onClickYear={onClickYear}
               />
             )
         }

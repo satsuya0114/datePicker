@@ -10,13 +10,13 @@ const Select = (props) => {
   return (
     <RowGrid>
       <Center>
-        <Button type="link" ghost icon={<LeftOutlined />} size="small" onClick={() => clickPrevNext(0)} />
+        <Button type="link" icon={<LeftOutlined />} size="small" onClick={() => clickPrevNext(0)} />
       </Center>
       <Center>
         <Button type="text" onClick={changeMode}>{showMY}</Button>
       </Center>
       <Center>
-        <Button type="link" ghost icon={<RightOutlined />} size="small" onClick={() => clickPrevNext(1)} />
+        <Button type="link" icon={<RightOutlined />} size="small" onClick={() => clickPrevNext(1)} />
       </Center>
     </RowGrid>
   );

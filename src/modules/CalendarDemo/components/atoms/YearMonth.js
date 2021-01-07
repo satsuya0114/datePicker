@@ -4,7 +4,7 @@ import moment from 'moment';
 import { YearMonthGrid, Center, YearMonthItem } from './styledComponent';
 
 const YearMonth = (props) => {
-  const { mode, selectDate, yearRange, viewDate } = props;
+  const { mode, selectDate, yearRange, viewDate, onClickMonth, onClickYear } = props;
   const [showYearRange, setShowYearRange] = useState([]);
   useEffect(() => {
     console.log(selectDate);
@@ -19,24 +19,26 @@ const YearMonth = (props) => {
       {
         mode === 'month'
           ? moment.monthsShort().map((month) => (
-            <Center>
+            <Center key={month}>
               <YearMonthItem
                 selected={month === moment(selectDate).format('MMM')
-                && moment(selectDate).format('YYYY') === moment(viewDate).format('YYYY')}
+                && moment(selectDate).year() === moment(viewDate).year()}
                 thisYM={moment().isSame(viewDate, 'year') && month === moment().format('MMM')
                 && !moment(selectDate).isSame(moment(), 'month')}
+                onClick={() => onClickMonth(month)}
               >
                 {month}
               </YearMonthItem>
             </Center>
           ))
           : showYearRange.map((year, index) => (
-            <Center>
+            <Center key={year}>
               <YearMonthItem
                 gray={index === 0 || index === 11}
-                selected={year === parseInt(moment(selectDate).format('YYYY'), 10)}
-                thisYM={year === parseInt(moment().format('YYYY'), 10)
-                && year !== parseInt(moment(selectDate).format('YYYY'), 10)}
+                selected={year === moment(selectDate).year()}
+                thisYM={year === moment().year()
+                && year !== moment(selectDate).year()}
+                onClick={() => onClickYear(year)}
               >
                 {year}
               </YearMonthItem>
@@ -52,12 +54,16 @@ YearMonth.propTypes = {
   selectDate: PropTypes.object,
   viewDate: PropTypes.object,
   yearRange: PropTypes.array,
+  onClickMonth: PropTypes.func,
+  onClickYear: PropTypes.func,
 };
 YearMonth.defaultProps = {
   mode: '',
   selectDate: null,
   viewDate: null,
   yearRange: [],
+  onClickMonth: () => {},
+  onClickYear: () => {},
 };
 
 export default YearMonth;
