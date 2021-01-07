@@ -43,7 +43,7 @@ const Calendar = (props) => {
         default:
       }
     }
-  }, [selectMode, viewDate]);
+  }, [selectMode, viewDate, yearRange[0]]);
 
   useEffect(() => {
     if (viewDate) {
@@ -53,9 +53,33 @@ const Calendar = (props) => {
 
   const clickPrevNext = (value) => {
     if (value === 1) {
-      console.log('click next');
+      // console.log('click next');
+      switch (selectMode) {
+        case 'date':
+          onChangeDate(moment(selectDate).add(1, 'day'));
+          break;
+        case 'month':
+          setViewDate(moment(viewDate).add(1, 'year'));
+          break;
+        case 'year':
+          setViewDate(moment(viewDate).add(10, 'year'));
+          break;
+        default:
+      }
     } else {
-      console.log('click prev');
+      // console.log('click prev');
+      switch (selectMode) {
+        case 'date':
+          onChangeDate(moment(selectDate).subtract(1, 'day'));
+          break;
+        case 'month':
+          setViewDate(moment(viewDate).subtract(1, 'year'));
+          break;
+        case 'year':
+          setViewDate(moment(viewDate).subtract(10, 'year'));
+          break;
+        default:
+      }
     }
   };
 
@@ -73,10 +97,6 @@ const Calendar = (props) => {
       }
       return mode;
     });
-  };
-
-  const clickDate = (date) => {
-    console.log(moment(date).format('YYYY/MM/DD'));
   };
 
   return (
