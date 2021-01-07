@@ -23,6 +23,8 @@ const YearMonth = (props) => {
               <YearMonthItem
                 selected={month === moment(selectDate).format('MMM')
                 && moment(selectDate).format('YYYY') === moment(viewDate).format('YYYY')}
+                thisYM={moment().isSame(viewDate, 'year') && month === moment().format('MMM')
+                && !moment(selectDate).isSame(moment(), 'month')}
               >
                 {month}
               </YearMonthItem>
@@ -33,6 +35,8 @@ const YearMonth = (props) => {
               <YearMonthItem
                 gray={index === 0 || index === 11}
                 selected={year === parseInt(moment(selectDate).format('YYYY'), 10)}
+                thisYM={year === parseInt(moment().format('YYYY'), 10)
+                && year !== parseInt(moment(selectDate).format('YYYY'), 10)}
               >
                 {year}
               </YearMonthItem>

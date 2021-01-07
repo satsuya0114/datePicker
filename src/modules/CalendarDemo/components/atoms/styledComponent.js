@@ -34,7 +34,8 @@ export const DateItem = styled(Center)`
   background-color: ${({ selected }) => selected ? 'rgb(219, 61, 68)' : 'transparent'};
   border-radius: 100%;
   color: ${({ selected }) => selected ? '#fff' : '#000'};
-  color: ${({ gray }) => gray && '#eee'}
+  color: ${({ gray }) => gray && '#eee'};
+  color: ${({ today }) => today && 'rgb(219, 61, 68)'};
 `;
 
 export const YearMonthGrid = styled.div`
@@ -52,5 +53,6 @@ export const YearMonthItem = styled(Center)`
   background-color: ${({ selected }) => selected ? 'rgb(219, 61, 68)' : 'transparent'};
   border-radius: 100%;
   color: ${({ selected }) => selected ? '#fff' : '#000'};
-  color: ${({ gray }) => gray && '#eee'}
+  color: ${({ gray }) => gray && '#eee'};
+  color: ${({ thisYM }) => thisYM && 'rgb(219, 61, 68)'};
 `;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Outer, Wrapper } from './styledComponent';
 import Select from './atoms/Select';
@@ -6,20 +7,25 @@ import YearMonth from './atoms/YearMonth';
 import Date from './atoms/Date';
 import { getYearRange } from '../commonFunction';
 
-const Calendar = () => {
+const Calendar = (props) => {
+  const { selectDate, onChangeDate } = props;
   const [showMY, setShowMY] = useState('');
   const [viewDate, setViewDate] = useState(null);
   const [yearRange, setYearRange] = useState([]);
-  const [selectDate, setSelectDate] = useState(null);
   const [selectMode, setSelectMode] = useState('date');
 
   useEffect(() => {
     console.log(moment().format('YYYY/MM/DD HH:mm'));
     setShowMY(moment().format('MMM YYYY'));
-    setSelectDate(moment());
     setViewDate(moment());
     setYearRange(getYearRange(parseInt(moment().format('YYYY'), 10)));
   }, []);
+
+  useEffect(() => {
+    if (selectDate) {
+      setViewDate(selectDate);
+    }
+  }, [selectDate]);
 
   useEffect(() => {
     if (viewDate !== null) {
@@ -37,7 +43,7 @@ const Calendar = () => {
         default:
       }
     }
-  }, [selectMode]);
+  }, [selectMode, viewDate]);
 
   useEffect(() => {
     if (viewDate) {
@@ -79,7 +85,7 @@ const Calendar = () => {
         <Select clickPrevNext={clickPrevNext} changeMode={changeMode} showMY={showMY} />
         {
           selectMode === 'date'
-            ? <Date viewDate={viewDate} selectDate={selectDate} clickDate={clickDate} />
+            ? <Date viewDate={viewDate} selectDate={selectDate} clickDate={onChangeDate} />
             : (
               <YearMonth
                 selectDate={selectDate}
@@ -92,6 +98,15 @@ const Calendar = () => {
       </Outer>
     </Wrapper>
   );
+};
+
+Calendar.propTypes = {
+  selectDate: PropTypes.object,
+  onChangeDate: PropTypes.func,
+};
+Calendar.defaultProps = {
+  selectDate: null,
+  onChangeDate: () => {},
 };
 
 export default Calendar;

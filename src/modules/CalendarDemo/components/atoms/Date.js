@@ -46,6 +46,7 @@ const Date = (props) => {
       {days42.map((dayObj) => (
         <DateItem
           gray={dayObj.gray}
+          today={moment(dayObj.date).isSame(moment(), 'day') && !moment(selectDate).isSame(dayObj.date, 'day')}
           selected={moment(selectDate).isSame(dayObj.date, 'day')}
           onClick={() => clickDate(dayObj.date)}
         >
