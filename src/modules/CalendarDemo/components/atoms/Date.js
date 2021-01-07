@@ -7,8 +7,9 @@ const Date = (props) => {
   const { selectDate, viewDate, clickDate } = props;
   const [days42, setDays42] = useState([]);
   useEffect(() => {
+    // console.log('viewDate change', moment(viewDate).format('YYYY/MM/DD'));
     if (selectDate || viewDate) {
-      const fdMonth = moment(selectDate).startOf('month'); // 1/1
+      const fdMonth = moment(viewDate).startOf('month'); // 1/1
       const fdCal = fdMonth.clone().startOf('week'); // 12/27
       const ldMonth = fdMonth.clone().endOf('month'); // 1/31
       const ldCal = ldMonth.clone().endOf('week'); // 2/06

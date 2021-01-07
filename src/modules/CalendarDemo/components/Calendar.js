@@ -15,7 +15,7 @@ const Calendar = (props) => {
   const [selectMode, setSelectMode] = useState('date');
 
   useEffect(() => {
-    console.log(moment().format('YYYY/MM/DD HH:mm'));
+    // console.log(moment().format('YYYY/MM/DD HH:mm'));
     setShowMY(moment().format('MMM YYYY'));
     setViewDate(moment());
     setYearRange(getYearRange(moment().year()));
@@ -28,6 +28,7 @@ const Calendar = (props) => {
   }, [selectDate]);
 
   useEffect(() => {
+    // console.log(viewDate);
     if (viewDate !== null) {
       switch (selectMode) {
         case 'date':
@@ -100,11 +101,14 @@ const Calendar = (props) => {
   };
 
   const onClickMonth = (month) => {
-    const viewYear = moment(viewDate).year();
-    setViewDate(moment());
+    setViewDate(moment(viewDate).month(month));
+    setSelectMode('date');
   };
 
-  const onClickYear = (year) => {};
+  const onClickYear = (year) => {
+    setViewDate(moment(viewDate).year(year));
+    setSelectMode('month');
+  };
 
   return (
     <Wrapper>

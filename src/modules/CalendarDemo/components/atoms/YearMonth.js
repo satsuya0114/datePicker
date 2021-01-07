@@ -7,9 +7,6 @@ const YearMonth = (props) => {
   const { mode, selectDate, yearRange, viewDate, onClickMonth, onClickYear } = props;
   const [showYearRange, setShowYearRange] = useState([]);
   useEffect(() => {
-    console.log(selectDate);
-  }, [selectDate]);
-  useEffect(() => {
     if (yearRange.length) {
       setShowYearRange([yearRange[0] - 1, ...yearRange, yearRange[9] + 1]);
     }
