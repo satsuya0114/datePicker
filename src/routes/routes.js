@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PATH from './path';
 
-const LoadingComponent = Component => props => (
+const LoadingComponent = (Component) => (props) => (
   <Suspense fallback={<div>Loading...</div>}>
     <Component {...props} />
   </Suspense>
