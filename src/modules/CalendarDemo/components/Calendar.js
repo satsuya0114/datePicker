@@ -57,7 +57,7 @@ const Calendar = (props) => {
       // console.log('click next');
       switch (selectMode) {
         case 'date':
-          onChangeDate(moment(selectDate).add(1, 'day'));
+          setViewDate(moment(viewDate).day(1).add(1, 'month'));
           break;
         case 'month':
           setViewDate(moment(viewDate).add(1, 'year'));
@@ -71,7 +71,7 @@ const Calendar = (props) => {
       // console.log('click prev');
       switch (selectMode) {
         case 'date':
-          onChangeDate(moment(selectDate).subtract(1, 'day'));
+          setViewDate(moment(viewDate).day(1).subtract(1, 'month'));
           break;
         case 'month':
           setViewDate(moment(viewDate).subtract(1, 'year'));

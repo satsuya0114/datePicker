@@ -20,6 +20,7 @@ const CalendarDemo = () => {
   }, [selectDate]);
   const onChangeDate = (date) => {
     setSelectDate(moment(date));
+    setShowCalendar(false);
   };
   const enterDate = () => {
     if (moment(inputValue).isValid()) {
@@ -32,7 +33,6 @@ const CalendarDemo = () => {
     <Page>
       <Relative>
         <Input
-          onBlur={() => setShowCalendar(false)}
           onClick={() => setShowCalendar(true)}
           style={{ width: '150px' }}
           placeholder="Enter your username"
@@ -41,7 +41,7 @@ const CalendarDemo = () => {
           onChange={(e) => setInputValue(e.target.value)}
           onPressEnter={enterDate}
         />
-        { true && (
+        { showCalendar && (
           <Absolute>
             <Calendar selectDate={selectDate} onChangeDate={onChangeDate} />
           </Absolute>
