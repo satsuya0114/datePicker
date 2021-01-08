@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-
-const square = 40;
+import { DAY } from '../../constant';
 
 export const RowGrid = styled.div`
   width: 100%;
-  height: ${square}px;
+  height: ${DAY}px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 `;
@@ -20,7 +19,7 @@ export const DateGrid = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: ${square}px;
+  grid-auto-rows: ${DAY}px;
 `;
 
 export const WeekName = styled(Center)`
@@ -29,8 +28,8 @@ export const WeekName = styled(Center)`
 
 export const DateItem = styled(Center)`
   cursor: pointer;
-  width: ${square}px;
-  height: ${square}px;
+  width: ${DAY}px;
+  height: ${DAY}px;
   background-color: ${({ selected }) => selected ? 'rgb(219, 61, 68)' : 'transparent'};
   border-radius: 100%;
   color: ${({ selected }) => selected ? '#fff' : '#000'};
@@ -43,13 +42,13 @@ export const YearMonthGrid = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: ${(square * 8 - 40) / 3}px;
+  grid-auto-rows: ${(DAY * 8 - 40) / 3}px;
 `;
 
 export const YearMonthItem = styled(Center)`
   cursor: pointer;
-  width: ${square + 10}px;
-  height: ${square + 10}px;
+  width: ${DAY + 10}px;
+  height: ${DAY + 10}px;
   background-color: ${({ selected }) => selected ? 'rgb(219, 61, 68)' : 'transparent'};
   border-radius: 100%;
   color: ${({ selected }) => selected ? '#fff' : '#000'};

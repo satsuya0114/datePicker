@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-const square = 40;
+import { DAY } from '../constant';
 
 export const Page = styled.div`
   display: flex;
@@ -15,8 +14,8 @@ export const Relative = styled.div`
 `;
 
 export const Outer = styled.div`
-  width: ${square * 8}px;
-  height: ${square * 8}px;
+  width: ${DAY * 8}px;
+  height: ${DAY * 8}px;
 `;
 
 export const Wrapper = styled.div`

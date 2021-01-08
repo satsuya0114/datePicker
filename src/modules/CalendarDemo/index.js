@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import moment from 'moment';
 import { CalendarOutlined } from '@ant-design/icons';
 import './style.less';
-import { Page, Relative, Absolute } from './styledComponent';
+import { Page, Tips, Relative, Absolute } from './styledComponent';
 import Calendar from './components/Calendar';
 
 const CalendarDemo = () => {
@@ -31,6 +31,8 @@ const CalendarDemo = () => {
   };
   return (
     <Page>
+      <Tips>click input will show the calendar</Tips>
+      <Tips>press return button in input will set the date </Tips>
       <Relative>
         <Input
           onClick={() => setShowCalendar(true)}
