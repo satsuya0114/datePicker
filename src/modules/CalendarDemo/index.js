@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
 import moment from 'moment';
 import { CalendarOutlined } from '@ant-design/icons';
+import { INPUT } from './constant';
 import './style.less';
 import { Page, Tips, Relative, Absolute } from './styledComponent';
 import Calendar from './components/Calendar';
@@ -36,7 +37,7 @@ const CalendarDemo = () => {
       <Relative>
         <Input
           onClick={() => setShowCalendar(true)}
-          style={{ width: '150px' }}
+          style={{ width: `${INPUT}px` }}
           placeholder="Enter your username"
           prefix={<CalendarOutlined className="site-form-item-icon" />}
           value={inputValue}
