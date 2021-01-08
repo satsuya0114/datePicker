@@ -2,6 +2,8 @@
 
 ## [live demo](https://satsuya0114-datepicker.herokuapp.com/calendardemo)
 
+start-kit use mine repo [here](https://github.com/satsuya0114/webpack5-babel7-react-starter)
+
 use
 
 babel after `7.4.0` => `7.12.9`
