@@ -16,7 +16,7 @@ and use `react-refresh`
 yarn install
 
 # run dev mode in localhost
-npm start
+npm run localstart
 ```
 
 homepage will in http://localhost:8080/
@@ -40,5 +40,5 @@ will in http://localhost:8080/calendardemo
 npm run build
 
 # run production in local express server
-npm run rundist
+npm start
 ```

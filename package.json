@@ -8,8 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "start": "webpack serve --hot --config webpack.dev.js",
-    "rundist": "node server.js",
+    "localstart": "webpack serve --hot --config webpack.dev.js",
+    "start": "node server.js",
     "build": "NODE_ENV=production webpack --env production --config webpack.prod.js",
     "genstats": "webpack --mode production --profile --json > stats.json"
   },
