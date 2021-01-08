@@ -1,5 +1,7 @@
 # datepicker-with-react
 
+## [live demo](https://satsuya0114-datepicker.herokuapp.com/calendardemo)
+
 use
 
 babel after `7.4.0` => `7.12.9`
@@ -19,7 +21,9 @@ yarn install
 npm run localstart
 ```
 
-homepage will in http://localhost:8080/
+homepage will in http://localhost:8080/ 
+
+[live demo](https://satsuya0114-datepicker.herokuapp.com)
 
 ![alt text](https://github.com/satsuya0114/datePicker/blob/main/readme.png)
 
@@ -30,6 +34,8 @@ dev mode can see BundleAnalyzerPlugin
 #### calendar demo
 
 will in http://localhost:8080/calendardemo
+
+[live demo](https://satsuya0114-datepicker.herokuapp.com/calendardemo)
 
 ![alt text](https://github.com/satsuya0114/datePicker/blob/main/calendarDemo.png)
 
